@@ -1,0 +1,14 @@
+# Generated, cached, and dead-end files - not part of this deposit.
+__pycache__/
+*.py[cod]
+results/
+cache/
+pretrained_models/
+model_weights/
+*.out
+*.err
+sensitive_data/
+.secrets/
+.DS_Store
+.vscode/
+.idea/

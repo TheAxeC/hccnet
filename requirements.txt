@@ -1,0 +1,34 @@
+## HCCNet dependencies, updated June 2026.
+## Verified working on the UTwente cluster with Python 3.10 + CUDA 11.6 (NVIDIA A40).
+## Install order (torch first, from the cu116 index):
+##   pip install torch==1.13.1+cu116 torchvision==0.14.1+cu116 ##       --extra-index-url https://download.pytorch.org/whl/cu116
+##   pip install -r requirements.txt
+##
+## Changes vs. the original (Python 3.7) file:
+##   - monai 1.1.0 -> 1.3.0   (code uses APIs added in 1.2+: get_index_of_first,
+##                             monai.transforms.spatial.functional.resize, SequenceStr)
+##   - timm         ADDED     (models/*.py import timm.models.layers / registry)
+##   - scikit-image ADDED     (KeepLargestConnectedComponentd needs skimage.measure)
+##   - nibabel      ADDED     (NIfTI I/O backend for MONAI)
+##   - setuptools<70 ADDED    (provides pkg_resources for torchmetrics 0.11.4)
+
+torch==1.13.1
+torchvision==0.14.1
+torchmetrics==0.11.4
+monai==1.3.0
+timm==0.6.13
+scikit-image==0.22.0
+nibabel==5.3.3
+numpy==1.23.5
+pandas==1.5.3
+scikit_learn==1.2.0
+natsort==7.1.1
+matplotlib==3.7.0
+seaborn==0.12.2
+tqdm==4.65.0
+setuptools<70
+
+## Only needed if you re-run the DICOM -> NIfTI conversion (raw data prep); not
+## required for training/testing on the already-converted nifti/ dataset.
+dicom2nifti==2.2.6
+pydicom==1.4.2
